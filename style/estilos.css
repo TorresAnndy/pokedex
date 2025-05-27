@@ -1,49 +1,109 @@
+/* Fondo dinámico tipo "universo digital" */
 body {
-    font-family: Arial, sans-serif;
-    background: #f0f8ff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: radial-gradient(circle at top left, #1e1e2f, #12121c);
     margin: 0;
     padding: 0;
+    color: #f0f0f0;
 }
 
+/* Contenedor principal con diseño tipo panel */
 #app {
-    max-width: 600px;
+    max-width: 1100px;
     margin: 40px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    text-align: center;
+    background: rgba(30, 30, 47, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(91, 134, 229, 0.4);
+    border: 2px solid #3b4cca;
+    backdrop-filter: blur(6px);
+    position: relative;
+    z-index: 1;
 }
 
+/* Encabezados elegantes */
 h1, h2 {
-    color: #3b4cca;
+    color: #ffcb05;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
 }
 
+/* Botones y select mejorados */
 button, select {
-    padding: 10px;
+    padding: 12px 20px;
     margin: 10px;
-    border-radius: 8px;
-    border: none;
-    background-color: #3b4cca;
-    color: white;
+    border-radius: 10px;
+    border: 2px solid #3b4cca;
+    background-color: #2a2e50;
+    color: #ffffff;
+    font-size: 16px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 button:hover, select:hover {
-    background-color: #2a34a0;
+    background-color: #3b4cca;
+    transform: translateY(-2px);
 }
 
+/* Zona de cartas con distribución dinámica */
+#pokemones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* Tarjetas con apariencia digital */
 .pokemon-card {
-    display: inline-block;
-    width: 130px;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: #e8eaf6;
+    width: 180px;
+    padding: 20px;
+    border-radius: 16px;
+    background: linear-gradient(160deg, #292c42, #1e1f2e);
+    border: 2px solid #3b4cca;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.pokemon-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(59, 76, 202, 0.6);
+}
+
+.pokemon-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 80%);
+    animation: pulse 5s linear infinite;
+    z-index: 0;
+}
+
+@keyframes pulse {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .pokemon-card img {
-    width: 96px;
-    height: 96px;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 12px;
+    z-index: 1;
+    position: relative;
+}
+
+.pokemon-card p {
+    margin: 6px 0;
+    font-size: 14px;
+    z-index: 1;
+    position: relative;
 }
